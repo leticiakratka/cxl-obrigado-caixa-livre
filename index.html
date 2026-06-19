@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obrigada · Caixa Livre — LCK</title>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://api.leticiakratka.com.br/chlmzfcpcchg.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','3t5wf=DgxeJCQuSzReLyAgKjAxXBFVUU1BRQIUWgQGFxkADxsMGgIXGwJIGQgFTQEC');</script>
+<!-- End Google Tag Manager -->
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F2ED;
+    --bg-soft: #FAF8F4;
+    --card: #FFFFFF;
+    --border: #E6E0D6;
+    --text: #1C1C1E;
+    --text-soft: #6C6C70;
+    --text-mute: #AEAEB2;
+    --gold: #8C7A52;
+    --gold-soft: #B09A6B;
+    --accent: #2A2520;
+    --success: #2D5F4F;
+    --radius: 14px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Header */
+  .header {
+    background: var(--bg-soft);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .header-brand img {
+    height: 66px;
+    width: auto;
+    display: block;
+    margin-top: 4px;
+  }
+  .header-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 10.5px;
+    color: var(--gold);
+    background: rgba(140, 122, 82, 0.08);
+    padding: 5px 12px 5px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+  .header-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  /* Progress */
+  .progress-wrap {
+    background: var(--bg-soft);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+  }
+  .progress-bar-bg {
+    height: 8px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 14px;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    min-width: 8px;
+    background: linear-gradient(90deg, #4ADE80, #16A34A);
+    border-radius: 999px;
+    transition: width 0.5s ease;
+  }
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 0 12px;
+    font-size: 11.5px;
+    color: var(--text-soft);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Main */
+  .main {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 56px 24px 80px;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    padding: 48px;
+    width: 100%;
+    max-width: 580px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+
+  .step { display: none; }
+  .step.active { display: block; }
+
+  .step-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 23px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 10px;
+    letter-spacing: -0.015em;
+  }
+
+  .question-hint {
+    font-size: 14px;
+    color: var(--text-soft);
+    margin-bottom: 32px;
+    line-height: 1.55;
+  }
+
+  /* Input fields */
+  .field { margin-bottom: 18px; }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 7px;
+  }
+  .field label .hint {
+    display: block;
+    font-size: 12px;
+    color: var(--text-soft);
+    font-weight: 400;
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--bg-soft);
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+    font-family: inherit;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    border-color: var(--gold);
+    background: #fff;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: var(--text-mute); }
+
+  .field textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.5;
+  }
+
+  .field-error {
+    font-size: 12px;
+    color: #B5341C;
+    margin-top: 6px;
+    display: none;
+  }
+  .field.has-error input,
+  .field.has-error textarea,
+  .field.has-error select {
+    border-color: #B5341C;
+  }
+  .field.has-error .field-error {
+    display: block;
+  }
+
+  /* Options (radio cards) */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: var(--bg-soft);
+  }
+  .option:hover { border-color: var(--gold-soft); background: #fff; }
+  .option.selected { border-color: var(--gold); background: #fff; }
+
+  .option-radio {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--text-mute);
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s;
+  }
+  .option.selected .option-radio {
+    border-color: var(--gold);
+    background: var(--gold);
+  }
+  .option.selected .option-radio::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+  }
+
+  .option-text { flex: 1; }
+  .option-title {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.45;
+  }
+  .option-desc {
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-top: 4px;
+    line-height: 1.45;
+  }
+
+  /* Botões */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 36px;
+  }
+  .btn {
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 14.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    font-family: inherit;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    flex: 1;
+  }
+  .btn-primary:hover { background: #000; }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-back {
+    background: transparent;
+    color: var(--text);
+    border: 1.5px solid var(--border);
+    padding: 14px 22px;
+  }
+  .btn-back:hover { background: var(--bg-soft); border-color: var(--text-mute); }
+
+  /* Loading */
+  .loading {
+    display: none;
+    text-align: center;
+    padding: 32px 0 12px;
+    color: var(--text-soft);
+    font-size: 14px;
+  }
+  .loading .spinner {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--border);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin: 0 auto 14px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Result screens */
+  .result {
+    display: none;
+    text-align: center;
+  }
+  .result-badge {
+    display: inline-block;
+    background: rgba(140, 122, 82, 0.1);
+    border: 1px solid rgba(140, 122, 82, 0.3);
+    border-radius: 30px;
+    padding: 7px 18px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+  }
+  .result h2 {
+    font-size: 26px;
+    margin-bottom: 14px;
+    letter-spacing: -0.02em;
+  }
+  .gift-emoji {
+    font-size: 56px;
+    line-height: 1;
+    margin: 10px 0 18px;
+    text-align: center;
+  }
+  .result .lead a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(140, 122, 82, 0.3);
+    transition: border-color 0.2s;
+  }
+  .result .lead a:hover {
+    border-bottom-color: var(--gold);
+  }
+  .result .lead {
+    font-size: 15px;
+    color: var(--text-soft);
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+  .gift-card {
+    background: linear-gradient(135deg, #2A2520 0%, #3A332B 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 28px 24px;
+    margin-bottom: 24px;
+    text-align: left;
+  }
+  .gift-card .gift-tag {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 10px;
+  }
+  .gift-card .gift-title {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .gift-card .gift-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.55;
+  }
+  .btn-cta {
+    display: inline-block;
+    background: var(--gold);
+    color: #fff;
+    padding: 16px 36px;
+    border-radius: 10px;
+    font-size: 14.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn-cta:hover { background: var(--gold-soft); }
+  .btn-cta:active { transform: scale(0.99); }
+
+  .erro-envio {
+    display: none;
+    background: #fdf0f0;
+    border: 1px solid #e8c0c0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #8b2020;
+    line-height: 1.5;
+  }
+
+  /* Boas-vindas (pós-compra) */
+  .welcome {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .welcome-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--success);
+    border: none;
+    color: #fff;
+    border-radius: 999px;
+    padding: 7px 16px 7px 13px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 14px rgba(45, 95, 79, 0.22);
+  }
+  .welcome-badge svg {
+    width: 15px;
+    height: 15px;
+    stroke: #fff;
+    stroke-width: 3;
+    fill: none;
+  }
+  .welcome h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+    margin-bottom: 12px;
+  }
+  .welcome p {
+    font-size: 15px;
+    color: var(--text-soft);
+    line-height: 1.6;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .welcome p strong { color: var(--text); font-weight: 600; }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .card { padding: 32px 24px; }
+    h2 { font-size: 20px; }
+    .result h2 { font-size: 22px; }
+    .header { padding: 14px 20px; }
+    .header-brand img { height: 57px; }
+    .progress-wrap { padding: 0 20px; }
+    .welcome h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://api.leticiakratka.com.br/ns.html?id=GTM-N9GCCZSW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="header">
+  <div class="header-tag">Caixa Livre · Diagnóstico</div>
+  <div class="header-brand"><img src="logo-lck.png" alt="Letícia Kratka"></div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressBar" style="width: 0%"></div></div>
+  <div class="progress-info">
+    <span id="progressLabel">Início</span>
+  </div>
+</div>
+
+<div class="main">
+  <div class="card" id="cardArea">
+
+    <!-- STEP 1 — Identificação -->
+    <div class="step active" data-step="1">
+
+      <div class="welcome">
+        <div class="welcome-badge">
+          <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+          Compra confirmada
+        </div>
+        <h1>Pronto, o Caixa Livre é seu</h1>
+        <p>Seu acesso tá indo pro seu email agora, dá uma olhada na caixa de entrada (e no spam, por garantia). Enquanto ele chega, me responde <strong>2 minutinhos</strong>: é assim que eu personalizo o que faz sentido pro seu momento.</p>
+      </div>
+
+      <div class="step-label">Diagnóstico rápido · menos de 2 min</div>
+      <h2>Vamos começar com o básico</h2>
+      <p class="question-hint">Preciso saber quem você é pra te dar o direcionamento certo no final.</p>
+
+      <div class="field" id="f-nome">
+        <label>Nome</label>
+        <input type="text" name="nome" placeholder="Seu nome completo">
+        <div class="field-error">Preencha seu nome.</div>
+      </div>
+      <div class="field" id="f-email">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="seuemail@exemplo.com">
+        <div class="field-error">Email inválido.</div>
+      </div>
+      <div class="field" id="f-telefone">
+        <label>Telefone / WhatsApp <span class="hint">com DDD, ou +código internacional se mora fora do Brasil</span></label>
+        <input type="tel" name="telefone" placeholder="(00) 00000-0000 ou +351 912 345 678" inputmode="tel" maxlength="20" autocomplete="tel">
+        <div class="field-error">Telefone inválido. Use DDD (10-11 dígitos) ou comece com + e o código do país.</div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" data-next="2">Continuar</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 — Profissão -->
+    <div class="step" data-step="2">
+      <div class="step-label">Etapa 2 · Sua profissão</div>
+      <h2>Como você gera renda hoje?</h2>
+      <p class="question-hint">Especifica sua profissão e a forma como você atua.</p>
+
+      <div class="field" id="f-profissao">
+        <input type="text" name="profissao" placeholder="Ex: médica autônoma, servidora pública, sócia de empresa...">
+        <div class="field-error">Preencha esse campo.</div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-back" data-back="1">Voltar</button>
+        <button type="button" class="btn btn-primary" data-next="3">Continuar</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 — Maior dor -->
+    <div class="step" data-step="3">
+      <div class="step-label">Etapa 3 · Sua maior dor</div>
+      <h2>Qual é a sua maior dor financeira hoje?</h2>
+      <p class="question-hint">Conta com as suas palavras. Quanto mais honesta a resposta, melhor o direcionamento.</p>
+
+      <div class="field" id="f-dor">
+        <textarea name="dor" placeholder="Pode falar abertamente..."></textarea>
+        <div class="field-error">Preencha esse campo.</div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-back" data-back="2">Voltar</button>
+        <button type="button" class="btn btn-primary" data-next="4">Continuar</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 — Situação atual -->
+    <div class="step" data-step="4">
+      <div class="step-label">Etapa 4 · Sua situação atual</div>
+      <h2>Qual dessas situações representa melhor onde você está hoje?</h2>
+      <p class="question-hint">Escolhe a que mais se aproxima da sua realidade.</p>
+
+      <div class="field" id="f-situacao">
+        <div class="options" id="opcoes-situacao">
+          <div class="option" data-value="gasta-tudo">
+            <div class="option-radio"></div>
+            <div class="option-text">
+              <div class="option-title">Gera boa renda, mas gasta quase tudo</div>
+              <div class="option-desc">Poupa menos do que gostaria, sente que o dinheiro entra e sai sem evolução.</div>
+            </div>
+          </div>
+          <div class="option" data-value="economiza-sem-destino">
+            <div class="option-radio"></div>
+            <div class="option-text">
+              <div class="option-title">Economiza todo mês, mas não sabe onde investir</div>
+              <div class="option-desc">Às vezes acaba gastando o que guardou porque o dinheiro não tem destino.</div>
+            </div>
+          </div>
+          <div class="option" data-value="ganha-pouco">
+            <div class="option-radio"></div>
+            <div class="option-text">
+              <div class="option-title">Ganha menos do que precisa para viver o padrão que gostaria</div>
+              <div class="option-desc">A conta não fecha pro estilo de vida que quer ter.</div>
+            </div>
+          </div>
+          <div class="option" data-value="dividas">
+            <div class="option-radio"></div>
+            <div class="option-text">
+              <div class="option-title">Tem dívidas que comprometem mais de 20% do orçamento</div>
+              <div class="option-desc">Empréstimos, financiamentos, ou perdeu o controle da fatura do cartão.</div>
+            </div>
+          </div>
+          <div class="option" data-value="poupa-muito">
+            <div class="option-radio"></div>
+            <div class="option-text">
+              <div class="option-title">Guarda mais que 50% da renda, mas não direciona bem</div>
+              <div class="option-desc">Quer ver o dinheiro render, mas não se sente seguro para investir.</div>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" name="situacao" id="input-situacao">
+        <div class="field-error">Selecione uma opção.</div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-back" data-back="3">Voltar</button>
+        <button type="button" class="btn btn-primary" data-next="5">Continuar</button>
+      </div>
+    </div>
+
+    <!-- STEP 5 — Renda -->
+    <div class="step" data-step="5">
+      <div class="step-label">Etapa 5 · Sua renda</div>
+      <h2>Qual a sua faixa de renda mensal líquida?</h2>
+      <p class="question-hint">O valor que efetivamente cai na sua conta corrente todo mês.</p>
+
+      <div class="field" id="f-renda">
+        <div class="options" id="opcoes-renda">
+          <div class="option" data-value="ate-5k"><div class="option-radio"></div><div class="option-text"><div class="option-title">Até R$ 5.000</div></div></div>
+          <div class="option" data-value="5k-7k"><div class="option-radio"></div><div class="option-text"><div class="option-title">De R$ 5.000 a R$ 7.000</div></div></div>
+          <div class="option" data-value="7k-12k"><div class="option-radio"></div><div class="option-text"><div class="option-title">De R$ 7.000 a R$ 12.000</div></div></div>
+          <div class="option" data-value="12k-18k"><div class="option-radio"></div><div class="option-text"><div class="option-title">De R$ 12.000 a R$ 18.000</div></div></div>
+          <div class="option" data-value="18k-50k"><div class="option-radio"></div><div class="option-text"><div class="option-title">De R$ 18.000 a R$ 50.000</div></div></div>
+          <div class="option" data-value="acima-50k"><div class="option-radio"></div><div class="option-text"><div class="option-title">Acima de R$ 50.000</div></div></div>
+        </div>
+        <input type="hidden" name="renda" id="input-renda">
+        <div class="field-error">Selecione uma opção.</div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-back" data-back="4">Voltar</button>
+        <button type="button" class="btn btn-primary" data-next="6">Continuar</button>
+      </div>
+    </div>
+
+    <!-- STEP 6 — Objetivo 12 meses -->
+    <div class="step" data-step="6">
+      <div class="step-label">Etapa 6 · Sua jornada</div>
+      <h2>O que você precisa alcançar em 12 meses pra sentir que valeu a pena?</h2>
+      <p class="question-hint">Define o resultado concreto que faria você olhar pra trás e dizer "valeu a pena ter começado".</p>
+
+      <div class="field" id="f-objetivo12m">
+        <textarea name="objetivo12m" placeholder="Em 12 meses, o que precisa estar acontecendo na sua vida..."></textarea>
+        <div class="field-error">Preencha esse campo.</div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-back" data-back="5">Voltar</button>
+        <button type="button" class="btn btn-primary" data-next="7">Continuar</button>
+      </div>
+    </div>
+
+    <!-- STEP 7 — Interesse -->
+    <div class="step" data-step="7">
+      <div class="step-label">Etapa 7 · Próximo passo</div>
+      <h2>Você quer conhecer o Método completo que aplico nas consultorias?</h2>
+      <p class="question-hint">É o caminho pra aprofundar ainda mais no controle de gastos e estruturar sua vida financeira por inteiro.</p>
+
+      <div class="field" id="f-interesse">
+        <div class="options" id="opcoes-interesse">
+          <div class="option" data-value="sim">
+            <div class="option-radio"></div>
+            <div class="option-text">
+              <div class="option-title">Sim, quero conhecer o Método</div>
+              <div class="option-desc">Estou pronta(o) pra ir além e estruturar minha vida financeira por completo.</div>
+            </div>
+          </div>
+          <div class="option" data-value="talvez">
+            <div class="option-radio"></div>
+            <div class="option-text">
+              <div class="option-title">Talvez</div>
+              <div class="option-desc">Pode ser que faça sentido, mas ainda estou com dúvidas.</div>
+            </div>
+          </div>
+          <div class="option" data-value="nao">
+            <div class="option-radio"></div>
+            <div class="option-text">
+              <div class="option-title">Por enquanto não</div>
+              <div class="option-desc">Quero focar só na planilha básica de gastos por agora.</div>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" name="interesse" id="input-interesse">
+        <div class="field-error">Selecione uma opção.</div>
+      </div>
+
+      <div class="erro-envio" id="erroEnvio">
+        Houve um problema ao enviar suas respostas. Tente novamente.
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-back" data-back="6">Voltar</button>
+        <button type="button" class="btn btn-primary" id="submitBtn">Enviar</button>
+      </div>
+
+      <div class="loading" id="loadingArea">
+        <div class="spinner"></div>
+        Enviando suas respostas...
+      </div>
+    </div>
+
+    <!-- STEP 9a — Resultado renda alta + interesse sim (GANHOU sessão) -->
+    <div class="step" data-step="9a">
+      <div class="result" style="display:block;">
+        <div class="result-badge">Você foi selecionada(o)</div>
+        <div class="gift-emoji">🎁</div>
+        <h2>Você ganhou uma sessão de Diagnóstico Financeiro</h2>
+        <p class="lead" id="lead9a">Com base nas suas respostas, faz todo sentido você falar com a Vanessa, planejadora financeira do nosso time. Sem custo.</p>
+
+        <div class="gift-card">
+          <div class="gift-tag">Cortesia · LCK</div>
+          <div class="gift-title" id="giftTitle9a">Diagnóstico Financeiro · 1 hora</div>
+          <div class="gift-desc" id="giftDesc9a">Você sai dessa call com diagnóstico do seu momento, direcionamento do próximo passo e clareza sobre o que tá te travando.</div>
+        </div>
+
+        <a href="#" class="btn-cta" id="btnAgendarCall">Agendar minha sessão</a>
+      </div>
+    </div>
+
+    <!-- STEP 9b — Resultado renda baixa + interesse sim -->
+    <div class="step" data-step="9b">
+      <div class="result" style="display:block;">
+        <div class="result-badge">Recebido</div>
+        <h2 id="title9b">O próximo passo te espera</h2>
+        <p class="lead" id="lead9b">A Jeane vai te chamar no WhatsApp em breve pra entender melhor seu momento e te apresentar o caminho ideal.</p>
+
+        <a href="#" class="btn-cta" id="btnWhatsJeane">Conversar com a Jeane no WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- STEP 9c — Resultado interesse "não" (sem CTA, respeita a decisão) -->
+    <div class="step" data-step="9c">
+      <div class="result" style="display:block;">
+        <div class="result-badge">Recebido</div>
+        <h2>Obrigada pelas respostas</h2>
+        <p class="lead" id="lead9c">Suas respostas chegaram aqui. Sigamos firme com o Caixa Livre, e quando quiser conversar sobre o próximo passo é só me chamar.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // =============================================
+  // CONFIGURAÇÃO — edite apenas esta seção
+  // =============================================
+
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwU5MQxIxltMKpdPPn1d8gqpF_NZC86xlazUTuBk87uJbwqkakZIdSJGJxy6-nj3Zy4SQ/exec';
+
+  // Destinos
+  const URL_AGENDAMENTO_PAULO   = 'https://calendar.app.google/rBLtrzhsg6pTGgw57';
+  const URL_AGENDAMENTO_VANESSA = 'https://calendar.app.google/gRKzU7t9hUxswPwb8';
+  const URL_AGENDAMENTO_LETICIA = 'https://calendar.app.google/HdEe5HMMkn7B3JDZ7';
+  const URL_AULA1_NUTROR = 'COLAR_URL_DA_AULA_1_NO_NUTROR';
+  const WHATSAPP_JEANE = '5561999245689';
+  const MSG_WHATSAPP_JEANE = 'Oi Jeane! Preenchi o formulário do Caixa Livre e quero saber mais sobre o próximo passo.';
+
+  // Quem atende a sessão, conforme o destino do roteamento (entra na frase {atendente})
+  const ATENDENTE = {
+    vanessa: 'a Vanessa, planejadora financeira do nosso time, vai te apresentar',
+    paulo: 'o Paulo, planejador financeiro do nosso time, vai te apresentar',
+    leticia: 'eu mesma vou te apresentar'
+  };
+
+  // Mapeamento de persona pela situação atual (interno, não aparece pro usuário)
+  const PERSONA_POR_SITUACAO = {
+    'gasta-tudo': 'milena',
+    'economiza-sem-destino': 'ana_luiza',
+    'ganha-pouco': 'milena',
+    'dividas': 'milena',
+    'poupa-muito': 'ana_luiza'
+  };
+
+  // Texto curto que reforça a situação que ela respondeu (volta na tela final)
+  const SITUACAO_REFORCO = {
+    'gasta-tudo': 'você gera uma boa renda mas gasta quase tudo, e poupa menos do que gostaria',
+    'economiza-sem-destino': 'você economiza todo mês mas não sabe onde investir, e às vezes acaba gastando o que guardou',
+    'ganha-pouco': 'você ganha menos do que precisa pra viver o padrão de vida que gostaria',
+    'dividas': 'você tem dívidas comprometendo mais de 20% do seu orçamento',
+    'poupa-muito': 'você guarda mais de 50% da renda mas não consegue direcionar bem essas economias'
+  };
+
+  // Pitch personalizado por persona × destino
+  // MILENA: macronarrativa Caixa Livre. Voz: "fazer o dinheiro sobrar", "respirar", clareza+leveza, "um jeito de finalmente dar certo mesmo pra quem tentou e falhou"
+  // ANA LUIZA: macronarrativa Travessia. Voz: "patrimônio não cresce no ritmo da renda", "ordem com etapas claras", "você não precisa de mais dinheiro, precisa de clareza"
+  const PITCH = {
+    milena: {
+      call: {
+        lead: 'Você me contou que {situacao}. <strong>O problema não é disciplina, é falta de método.</strong> Na sessão, {atendente} vai te apresentar um <strong>diagnóstico do seu momento financeiro</strong> e uma <strong>proposta de solução personalizada</strong> pra você sair desse sufoco e alcançar seu objetivo dos próximos 12 meses.',
+        giftTitle: 'Diagnóstico Financeiro · 1 hora',
+        giftDesc: 'Você sai com <strong>diagnóstico do seu momento</strong> e uma <strong>proposta personalizada</strong> pra sair do aperto e respirar financeiramente.'
+      },
+      whats_sim: {
+        title: 'A Jeane vai te chamar',
+        lead: 'Você me contou que {situacao}. Tem um caminho leve pra <strong>sair desse ciclo</strong> e começar a <strong>fazer o dinheiro sobrar de verdade</strong>. A Jeane vai te chamar no WhatsApp.'
+      },
+      whats_talvez: {
+        title: 'Vamos tirar suas dúvidas',
+        lead: 'Você me contou que {situacao} e ainda está com dúvidas. A Jeane vai te chamar pra <strong>entender o que você precisa saber</strong> pra decidir.'
+      },
+      sem_cta: 'Suas respostas chegaram. Quando quiser aprofundar sua organização pra <strong>sair do aperto e respirar financeiramente</strong>, é só me chamar no Instagram <a href="https://instagram.com/leticiakratka" target="_blank" rel="noopener">@leticiakratka</a>.'
+    },
+    ana_luiza: {
+      call: {
+        lead: 'Você me contou que {situacao}. <strong>Você não precisa de mais dinheiro, precisa de clareza.</strong> Na sessão, {atendente} vai te apresentar um <strong>diagnóstico do seu momento financeiro</strong> e uma <strong>proposta de solução personalizada</strong> pra fazer seu patrimônio crescer no ritmo da sua renda.',
+        giftTitle: 'Diagnóstico Financeiro · 1 hora',
+        giftDesc: 'Você sai com <strong>diagnóstico do seu momento</strong> e uma <strong>proposta personalizada</strong> com a ordem, etapas e investimentos pro seu caso.'
+      },
+      whats_sim: {
+        title: 'A Jeane vai te chamar',
+        lead: 'Você me contou que {situacao}. Existe uma <strong>ordem com etapas claras</strong> que transforma o que você quer em <strong>quanto, onde e quando</strong>. A Jeane vai te chamar no WhatsApp.'
+      },
+      whats_talvez: {
+        title: 'Vamos tirar suas dúvidas',
+        lead: 'Você me contou que {situacao} e ainda está com dúvidas. A Jeane vai te chamar. <strong>Você não precisa de mais dinheiro, precisa de clareza.</strong>'
+      },
+      sem_cta: 'Suas respostas chegaram. Quando quiser aprofundar sua organização pra <strong>construir patrimônio com critério e etapas claras</strong>, é só me chamar no Instagram <a href="https://instagram.com/leticiakratka" target="_blank" rel="noopener">@leticiakratka</a>.'
+    }
+  };
+
+  // =============================================
+
+  const TOTAL_STEPS = 7;
+  const STEP_LABELS = {
+    1: 'Sobre você', 2: 'Profissão', 3: 'Maior dor',
+    4: 'Situação atual', 5: 'Renda', 6: 'Jornada 12 meses', 7: 'Próximo passo'
+  };
+
+  let currentStep = 1;
+
+  const card = document.getElementById('cardArea');
+  const progressBar = document.getElementById('progressBar');
+  const progressLabel = document.getElementById('progressLabel');
+  const progressCount = document.getElementById('progressCount'); // removido da tela; guardas abaixo
+  const erroEnvio = document.getElementById('erroEnvio');
+  const loadingArea = document.getElementById('loadingArea');
+  const submitBtn = document.getElementById('submitBtn');
+
+  // Captura UTMs
+  function getUTMs() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      utm_source: params.get('utm_source') || '',
+      utm_medium: params.get('utm_medium') || '',
+      utm_campaign: params.get('utm_campaign') || '',
+      utm_content: params.get('utm_content') || '',
+      utm_term: params.get('utm_term') || '',
+      fbclid: params.get('fbclid') || '',
+      gclid: params.get('gclid') || ''
+    };
+  }
+
+  function goToStep(stepKey) {
+    document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+    const next = document.querySelector('.step[data-step="' + stepKey + '"]');
+    if (next) next.classList.add('active');
+
+    if (typeof stepKey === 'number' || /^[0-9]+$/.test(stepKey)) {
+      currentStep = parseInt(stepKey, 10);
+      const pct = ((currentStep - 1) / TOTAL_STEPS) * 100;
+      progressBar.style.width = pct + '%';
+      progressLabel.textContent = STEP_LABELS[currentStep] || '';
+      if (progressCount) progressCount.textContent = (currentStep - 1) + ' / ' + TOTAL_STEPS;
+    } else {
+      // Resultado final
+      progressBar.style.width = '100%';
+      progressLabel.textContent = 'Concluído';
+      if (progressCount) progressCount.textContent = TOTAL_STEPS + ' / ' + TOTAL_STEPS;
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Navegação
+  document.querySelectorAll('[data-next]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const target = btn.getAttribute('data-next');
+      if (validateStep(currentStep)) {
+        goToStep(target);
+      }
+    });
+  });
+  document.querySelectorAll('[data-back]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      goToStep(btn.getAttribute('data-back'));
+    });
+  });
+
+  // Seleção de opções
+  ['situacao', 'renda', 'interesse'].forEach(function(group) {
+    const container = document.getElementById('opcoes-' + group);
+    const hidden = document.getElementById('input-' + group);
+    container.querySelectorAll('.option').forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        container.querySelectorAll('.option').forEach(function(o) { o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        hidden.value = opt.getAttribute('data-value');
+        document.getElementById('f-' + group).classList.remove('has-error');
+      });
+    });
+  });
+
+  // Máscara telefone
+  const telefoneInput = document.querySelector('input[name="telefone"]');
+  telefoneInput.addEventListener('input', function(e) {
+    const raw = e.target.value;
+    if (raw.trim().startsWith('+')) {
+      const digits = raw.replace(/\D/g, '').slice(0, 15);
+      e.target.value = '+' + digits;
+    } else {
+      let v = raw.replace(/\D/g, '').slice(0, 11);
+      if (v.length > 10) v = v.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3');
+      else if (v.length > 6) v = v.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+      else if (v.length > 2) v = v.replace(/^(\d{2})(\d{0,5}).*/, '($1) $2');
+      else if (v.length > 0) v = '(' + v;
+      e.target.value = v;
+    }
+  });
+
+  function validateStep(step) {
+    let valid = true;
+    const stepEl = document.querySelector('.step[data-step="' + step + '"]');
+    stepEl.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea').forEach(function(input) {
+      const field = input.closest('.field');
+      if (!field) return;
+      const value = input.value.trim();
+      let ok = value.length > 0;
+      if (input.type === 'email' && value) {
+        ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+      if (input.type === 'tel' && value) {
+        const digits = value.replace(/\D/g, '');
+        if (value.startsWith('+')) ok = digits.length >= 8 && digits.length <= 15;
+        else ok = digits.length === 10 || digits.length === 11;
+      }
+      field.classList.toggle('has-error', !ok);
+      if (!ok) valid = false;
+    });
+    // Valida hidden (radio cards)
+    stepEl.querySelectorAll('input[type="hidden"]').forEach(function(hidden) {
+      const field = hidden.closest('.field');
+      if (field && !hidden.value) {
+        field.classList.add('has-error');
+        valid = false;
+      }
+    });
+    return valid;
+  }
+
+  function getRedirectInfo(renda, interesse) {
+    if (interesse === 'nao') return { step: '9c' };
+    if (renda === 'acima-50k') return { step: '9a', destino: 'leticia' };
+    if (renda === '12k-18k' || renda === '18k-50k') return { step: '9a', destino: 'vanessa' };
+    if (renda === '7k-12k') return { step: '9a', destino: 'paulo' };
+    return { step: '9b' };
+  }
+
+  function personalizarResultado(step, situacao, interesse, destino) {
+    const persona = PERSONA_POR_SITUACAO[situacao] || 'milena';
+    const reforco = SITUACAO_REFORCO[situacao] || '';
+    const pitch = PITCH[persona];
+    const atendente = ATENDENTE[destino] || ATENDENTE.vanessa;
+
+    // innerHTML é seguro aqui porque os textos vêm de constantes internas (PITCH + SITUACAO_REFORCO).
+    // Nenhum input direto do usuário é injetado nessas frases.
+    if (step === '9a') {
+      document.getElementById('lead9a').innerHTML =
+        pitch.call.lead.replace('{situacao}', reforco).replace('{atendente}', atendente);
+      document.getElementById('giftTitle9a').innerHTML = pitch.call.giftTitle;
+      document.getElementById('giftDesc9a').innerHTML = pitch.call.giftDesc;
+    } else if (step === '9b') {
+      const variant = interesse === 'talvez' ? pitch.whats_talvez : pitch.whats_sim;
+      document.getElementById('title9b').textContent = variant.title;
+      document.getElementById('lead9b').innerHTML =
+        variant.lead.replace('{situacao}', reforco);
+    } else if (step === '9c') {
+      document.getElementById('lead9c').innerHTML = pitch.sem_cta;
+    }
+  }
+
+  function enviarDados(payload) {
+    return new Promise(function(resolve) {
+      const params = new URLSearchParams(payload).toString();
+      const url = APPS_SCRIPT_URL + '?' + params;
+
+      // Fire-and-forget: dispara a request mas não espera a resposta do Apps Script.
+      // O Apps Script grava na planilha em background (e dispara o webhook quando estiver pronto).
+      // UX continua rápida mesmo se o backend demorar.
+      fetch(url, { method: 'GET', mode: 'no-cors' }).catch(function() {});
+
+      // Resolve em 500ms pra dar feedback visual de "enviando", sem travar.
+      setTimeout(function() { resolve(true); }, 500);
+    });
+  }
+
+  submitBtn.addEventListener('click', async function() {
+    erroEnvio.style.display = 'none';
+    if (!validateStep(7)) return;
+
+    const form = document.querySelector('.step[data-step="1"]');
+    const renda = document.getElementById('input-renda').value;
+    const interesse = document.getElementById('input-interesse').value;
+
+    const situacaoCodigo = document.getElementById('input-situacao').value;
+    const personaDetectada = PERSONA_POR_SITUACAO[situacaoCodigo] || 'indefinida';
+
+    const payload = {
+      nome: document.querySelector('input[name="nome"]').value.trim(),
+      email: document.querySelector('input[name="email"]').value.trim(),
+      telefone: document.querySelector('input[name="telefone"]').value.trim(),
+      profissao: document.querySelector('input[name="profissao"]').value.trim(),
+      dor: document.querySelector('textarea[name="dor"]').value.trim(),
+      situacao: situacaoCodigo,
+      renda_codigo: renda,
+      renda: document.querySelector('.step[data-step="5"] .option.selected .option-title').textContent.trim(),
+      objetivo12m: document.querySelector('textarea[name="objetivo12m"]').value.trim(),
+      interesse: interesse,
+      persona: personaDetectada,
+      data: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
+      ...getUTMs()
+    };
+
+    document.querySelector('.step[data-step="7"] .btn-row').style.display = 'none';
+    loadingArea.style.display = 'block';
+    submitBtn.disabled = true;
+
+    const enviado = await enviarDados(payload);
+    loadingArea.style.display = 'none';
+
+    if (enviado) {
+      const info = getRedirectInfo(renda, interesse);
+      const situacao = situacaoCodigo;
+
+      // Personaliza pitch da tela final conforme persona detectada e interesse
+      personalizarResultado(info.step, situacao, interesse, info.destino);
+
+      // Configura CTAs do resultado (só os que existem)
+      const btnCall = document.getElementById('btnAgendarCall');
+      const btnWhats = document.getElementById('btnWhatsJeane');
+      if (btnCall) {
+        if (info.destino === 'leticia') btnCall.href = URL_AGENDAMENTO_LETICIA;
+        else if (info.destino === 'paulo') btnCall.href = URL_AGENDAMENTO_PAULO;
+        else btnCall.href = URL_AGENDAMENTO_VANESSA;
+      }
+      if (btnWhats) btnWhats.href = 'https://wa.me/' + WHATSAPP_JEANE + '?text=' + encodeURIComponent(MSG_WHATSAPP_JEANE);
+
+      goToStep(info.step);
+    } else {
+      document.querySelector('.step[data-step="7"] .btn-row').style.display = 'flex';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Tentar novamente';
+      erroEnvio.style.display = 'block';
+    }
+  });
+
+  // Inicializa
+  goToStep(1);
+</script>
+</body>
+</html>
